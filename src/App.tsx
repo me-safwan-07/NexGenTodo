@@ -1,8 +1,14 @@
-import AppRouter from "./router";
+// import AppRouter from "./router";
+// import Home from "./pages/Home"
+import Sidebar from "./components/Sidebar"
 
 const App = () => {
   return(
-    <AppRouter />
+    <>
+      {/* <AppRouter /> */}
+      {/* <Home /> */}
+      <Sidebar />
+    </>
   )
 }
 

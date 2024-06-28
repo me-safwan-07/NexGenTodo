@@ -1,7 +1,9 @@
 
-import { GreetingHeader } from "../styles/index";
-
+import { GreetingHeader,} from "../styles";
+// import { } from "@mui/icons-material";
 const Home = () => {
+
+    // const isMobile = useResponsiveDisplay();
     return (
         <>
             <GreetingHeader>

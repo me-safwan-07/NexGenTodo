@@ -1,0 +1,1 @@
+export { systemInfo} from "./getSysteminfo";
