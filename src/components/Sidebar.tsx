@@ -1,4 +1,8 @@
 import styled from "@emotion/styled";
+import {
+    AddRounded
+} from "@mui/icons-material"
+import { MenuItem } from "@mui/material"
 import logo from "../assets/logo256.png";
 
 const profileSidebar = () => {
@@ -11,8 +15,11 @@ const profileSidebar = () => {
                     <span>.</span>
                 </LogoText>
             </LogoContainer>
+            <StyledMenuItem>
+                <AddRounded /> &nbsp; Add Task
+            </StyledMenuItem>
+           
         </Container>
-        
     )
 }
 
@@ -47,5 +54,9 @@ const LogoText = styled.div`
         color: #232e58}; //my color;
     }
 `;
+
+const StyledMenuItem = styled(MenuItem)`
+    padd
+`
 
 export default profileSidebar;

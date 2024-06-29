@@ -1,12 +1,12 @@
 // import AppRouter from "./router";
-// import Home from "./pages/Home"
+import Home from "./pages/Home"
 import Sidebar from "./components/Sidebar"
 
 const App = () => {
   return(
     <>
       {/* <AppRouter /> */}
-      {/* <Home /> */}
+      <Home />
       <Sidebar />
     </>
   )
