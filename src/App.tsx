@@ -1,13 +1,13 @@
+// import React from "react"
 // import AppRouter from "./router";
-import Home from "./pages/Home"
-import Sidebar from "./components/Sidebar"
-
+import Home from "./pages/Home";
+import MainLayout from "./layouts/MainLayout";
 const App = () => {
   return(
     <>
-      {/* <AppRouter /> */}
-      <Home />
-      <Sidebar />
+      <MainLayout>
+        <Home />
+      </MainLayout>
     </>
   )
 }

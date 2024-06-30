@@ -1,7 +1,7 @@
-
 import { GreetingHeader, TaskCompletionText, TaskCountTextContainer} from "../styles";
 // import { } from "@mui/icons-material";
 import { displayGreeting, getRandomGreeting, getTaskCompletionText} from "../utils";
+
 const Home = () => {
     const completedTaskPercentage = 100;
     // const isMobile = useResponsiveDisplay();
