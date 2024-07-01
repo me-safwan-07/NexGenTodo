@@ -6,6 +6,7 @@ import {
   DeleteForeverRounded,
   GetAppRounded,
   GitHub,
+  SettingsRounded
 } from "@mui/icons-material"
 import { 
     MenuItem, 
@@ -30,7 +31,7 @@ export const ProfileSidebar = () => {
     const handleClose = () => {
         setanchoreE1(null);
     }
-    return(
+    return (
         <Container>
             <Tooltip title="">
                 <IconButton
@@ -69,7 +70,7 @@ export const ProfileSidebar = () => {
                     </LogoText>
                 </LogoContainer>
 
-                <MenuLink to="">
+                <MenuLink to="/add">
                     <StyledMenuItem>
                         <AddRounded /> &nbsp; Add Task
                     </StyledMenuItem>
@@ -93,13 +94,30 @@ export const ProfileSidebar = () => {
                     </StyledMenuItem>
                 </MenuLink>
 
-            <StyledDivider />
+                <StyledDivider />
 
-            <MenuLink to="https://github.com/me-safwan-07">
-                <StyledMenuItem>
-                    <GitHub />  &nbsp; Github
-                </StyledMenuItem>
-            </MenuLink>
+                <MenuLink to="https://github.com/me-safwan-07">
+                    <StyledMenuItem>
+                        <GitHub />  &nbsp; Github
+                    </StyledMenuItem>
+                </MenuLink>
+
+                <ProfileOptionsBottom>
+                    <SettingsMenuItem>
+                        <SettingsRounded /> &nbsp; Settings
+                    </SettingsMenuItem>
+
+                    <StyledDivider />
+
+                    <MenuLink to="">
+                        <ProfileMenuItem>
+                            <Avatar>
+                                S
+                            </Avatar>
+                            <h4 style={{ margin: 0, fontWeight: 600 }}>Safwan</h4>
+                        </ProfileMenuItem>
+                    </MenuLink>
+                </ProfileOptionsBottom>
             </StyledSwipeableDrawer>
             
         </Container>
@@ -142,6 +160,7 @@ const StyledSwipeableDrawer = styled(SwipeableDrawer)`
         padding: 4px 12px;
         color: "#101727";
         z-index: 999;
+        background: "#1f1f1b2";
 
         @media (min-width: 1920px) {
             min-width: 310px;
@@ -199,3 +218,32 @@ const StyledMenuItem = styled(MenuItem)`
         }
     }
 `;
+
+const SettingsMenuItem = styled(StyledMenuItem) `
+    background: "#1f1f1f";
+    margin-top: 8px;
+    &: hover {
+        background: "#1f1f1b2";
+        & svg[data-testid="SettingsRoundedIcon"] {
+            transform: rotate(180deg);
+        }
+    }
+`;
+
+const ProfileOptionsBottom = styled.div`
+    margin-top: auto;
+    margin-bottom: 38px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+` 
+
+const ProfileMenuItem = styled(StyledMenuItem) `
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #1f1f1f;
+    &:hover {
+        background: "#1f1f1b2"
+    }
+`
