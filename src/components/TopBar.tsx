@@ -1,14 +1,15 @@
 import styled from "@emotion/styled";
+import { useNavigate } from "react-router-dom";
 import { ArrowBackIosNewRounded } from "@mui/icons-material"
 interface TopBarProps {
     title: string;
 }
 
 export const TopBar = ({ title}: TopBarProps) => {
-    
+    const n = useNavigate();
     return (
         <Container>
-            <BackBtn>
+            <BackBtn aria-label="Back" onClick={() => n("/")}>
                 <ArrowBackIosNewRounded />
             </BackBtn>
             <TiTle>{title}</TiTle>
