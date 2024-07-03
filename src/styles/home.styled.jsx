@@ -28,8 +28,7 @@ export const AddButton = styled(Button)<{ animate?: boolean; glow: boolean }>`
     bottom: 24px;
     width: 72px;
     border-radius: 100%;
-
-`
+`;
 
 export const TaskCompletionText = styled.p`
     margin: 0;

@@ -1,1 +1,3 @@
-export * from "./home.styled";
+export * from "./";
+export * from "./Common.styled";
+export * from "./globalStyles"
