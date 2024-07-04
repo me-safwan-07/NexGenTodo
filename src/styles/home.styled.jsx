@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Button } from "@mui/material";
+// import { Button } from "@mui/material";
 
 export const TaskCountTextContainer = styled.div`
     line-height: 1.7;
@@ -18,17 +18,17 @@ export const GreetingHeader = styled.div`
     }
 `;
 
-export const AddButton = styled(Button)<{ animate?: boolean; glow: boolean }>`
-    cursor: pointer;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    bottom: 24px;
-    width: 72px;
-    border-radius: 100%;
-`;
+// export const AddButton = styled(Button)<{ animate?: boolean; glow: boolean }>`
+//     cursor: pointer;
+//     border: none;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     position: fixed;
+//     bottom: 24px;
+//     width: 72px;
+//     border-radius: 100%;
+// `;
 
 export const TaskCompletionText = styled.p`
     margin: 0;

@@ -1,15 +1,17 @@
-import React, { useContext } from "react";
+// import { useContext, useEffect } from "react";
 
 import MainLayout from "./layouts/MainLayout";
 import AppRouter from "./router";
 import { UserContext } from "./contexts/UserContext";
-import { useResponsiveDisplay } from "./hooks/useResponsiveDisplay" 
+// import { useResponsiveDisplay } from "./hooks/useResponsiveDisplay" 
 import { GlobalStyles } from "./styles";
+// import { defaultUser } from "./constants/defaultUser";
+
+
 const App = () => {
-  // const { user, setUser } = useContext(UserContext);
-  const isMobile = useResponsiveDisplay();
-  // const sysytemTheme = useSystemTheme();
+
   return (
+    <GlobalStyles />
     <MainLayout>
       <AppRouter />
     </MainLayout>
