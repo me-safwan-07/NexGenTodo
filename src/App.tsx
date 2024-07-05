@@ -2,7 +2,7 @@
 
 import MainLayout from "./layouts/MainLayout";
 import AppRouter from "./router";
-import { UserContext } from "./contexts/UserContext";
+// import { UserContext } from "./contexts/UserContext";
 // import { useResponsiveDisplay } from "./hooks/useResponsiveDisplay" 
 import { GlobalStyles } from "./styles";
 // import { defaultUser } from "./constants/defaultUser";
@@ -11,10 +11,13 @@ import { GlobalStyles } from "./styles";
 const App = () => {
 
   return (
-    <GlobalStyles />
-    <MainLayout>
-      <AppRouter />
-    </MainLayout>
+    <>
+      <GlobalStyles />
+      <MainLayout>
+        <AppRouter />
+      </MainLayout>
+    </>
+    
   );
 };
 

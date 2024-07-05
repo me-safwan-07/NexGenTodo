@@ -1,3 +1,4 @@
-export * from "./";
+// export * from "./theme";
 export * from "./Common.styled";
-export * from "./globalStyles"
+export * from "./GlobalStyles";
+export * from "./theme"

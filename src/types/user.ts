@@ -36,7 +36,7 @@ export interface Category {
     id: UUID;
     name: string;
     emoji?: string;
-    color: string;
+    color?: string;
 }
 
 export interface AppSettings {

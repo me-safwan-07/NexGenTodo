@@ -5,7 +5,7 @@ import { Loading } from "./components"
 const Home = lazy(() => import('./pages/Home'));
 const AddTask = lazy(() => import('./pages/AddTask'));
 const TaskDetails = lazy(() => import('./pages/TaskDetails'));
-
+const Categories = lazy(() => import('./pages/Categories'));
 const AppRouter = () : ReactElement => {
     return(
         <Suspense fallback={<Loading />}>
@@ -13,6 +13,7 @@ const AppRouter = () : ReactElement => {
                 <Route path="/" element={<Home />}/>
                 <Route path="/task" element={<TaskDetails />} />
                 <Route path="/add" element={<AddTask />} />
+                <Route path="/categories" element={<Categories />} />
             </Routes>
         </Suspense>
     );

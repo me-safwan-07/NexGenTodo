@@ -82,7 +82,7 @@ export const ProfileSidebar = () => {
                     </StyledMenuItem>
                 </MenuLink>
 
-                <MenuLink to="">
+                <MenuLink to="/categories">
                     <StyledMenuItem>
                         <CategoryRounded /> &nbsp; Categories
                     </StyledMenuItem>
