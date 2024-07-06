@@ -33,7 +33,7 @@ export const defaultUser: User = {
         {
             id: "0292cba5-f6e2-41c4-b5a7-c59a0aaecfe3",
             name: "Work",
-            emoji: "1f3e0",
+            emoji: "1f3e2",
             color: "#1fff44"
         },
         {
