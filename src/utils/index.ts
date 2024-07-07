@@ -4,3 +4,4 @@ export { getRandomGreeting } from  "./getRandomGreeting";
 export { getTaskCompletionText } from "./getTaskCompletionText";
 export { showToast } from "./showToast";
 export { getFontColor } from "./getFontColor";
+export { timeAgo } from "./timeAgo";

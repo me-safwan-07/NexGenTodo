@@ -1,31 +1,60 @@
 // import { GreetingHeader, TaskCompletionText, TaskCountTextContainer} from "../styles";
 // import { } from "@mui/icons-material";
-import { useContext } from "react";
+import React, { useContext, ReactNode, useState } from "react";
 import { 
     displayGreeting,
     getRandomGreeting, 
     getTaskCompletionText
 } from "../utils";
 import { Emoji } from "emoji-picker-react";
-// import { UserContext } from "../contexts/UserContext"
+import { UserContext } from "../contexts/UserContext"
 
 const Home = () => {
-    // const { user } = useContext(UseContext);
-    // const { tasks, emojiStyle, setting, name } = user;
+    const { user } = useContext(UserContext);
+    const { name } = user;
+    const [randomGreeting, setRandomGreetin] = useState<string | ReactNode>("");
+    const [greetingKey, setGreetingKey] = useState<number>(0);
+
     const completedTaskPercentage = 100;
     // const isMobile = useResponsiveDisplay();
+
+    const replaceEmojiCodes = (text: string) : ReactNode[] => {
+        const emojiRegex = /\*\*(.*?)\*\*/g;
+        const parts = text.split(emojiRegex);
+
+        return parts.map((part, index) => {
+            if(index % 2 === 1) {
+                // It's an emoji code, render, Emoji component
+                const emojiCode = part.trim();
+                return <Emoji key={index} size={20} unified={emojiCode} />;
+            } else {
+                // It's regular text
+                return part;
+            }
+        });
+    };
+
+    const renderGreetingWithEmojis = (text: string | ReactNode) => {
+        if(typeof text === "string") {
+            return replaceEmojiCodes(text);
+        } else {
+            return text;
+        }
+    }
     return (
         <>
             <GreetingHeader>
                 <Emoji unified="1f446" /> &nbsp; {displayGreeting()}
-                {/* {name && (
+                {name && (
                     <span translate="no">
                         , <span> {name} </span>
                     </span>
-                )} */}
-                <span>{displayGreeting()} safwan</span>
-                <p>{getRandomGreeting()}</p>
+                )}
             </GreetingHeader>
+            <GreetingText key={greetingKey}>{renderGreetingWithEmojis(randomGreeting)}</GreetingText>
+                {/* <span>{displayGreeting()} safwan</span>
+                <p>{getRandomGreeting()}</p> */}
+            
             <TaskCountTextContainer>
                 <TaskCompletionText>
                     {getTaskCompletionText(completedTaskPercentage)}
@@ -73,3 +102,5 @@ export const TaskCountTextContainer = styled.div`
     margin: 0;
     font-size: 16px;
 `
+
+const GreetingText = styled.div``
