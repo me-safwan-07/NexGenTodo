@@ -6,13 +6,14 @@ import AppRouter from "./router";
 // import { useResponsiveDisplay } from "./hooks/useResponsiveDisplay" 
 import { GlobalStyles } from "./styles";
 // import { defaultUser } from "./constants/defaultUser";
-
+import { BottomNav } from "./components"
 
 const App = () => {
 
   return (
     <>
       <GlobalStyles />
+      <BottomNav />
       <MainLayout>
         <AppRouter />
       </MainLayout>
