@@ -5,3 +5,4 @@ export { TasksList } from "./tasks/TasksList";
 export { ProfileSidebar } from "./Sidebar";
 export { TopBar } from "./TopBar";
 export { CustomEmojiPicker } from "./EmojiPicker";
+export { BottomNav } from "./BottomNav";
