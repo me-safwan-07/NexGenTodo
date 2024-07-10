@@ -1,14 +1,22 @@
 // import { GreetingHeader, TaskCompletionText, TaskCountTextContainer} from "../styles";
 // import { } from "@mui/icons-material";
-import React, { useContext, ReactNode, useState } from "react";
+import React, { useContext,lazy, ReactNode, useState, Suspense } from "react";
 import { 
     displayGreeting,
-    getRandomGreeting, 
+    // getRandomGreeting, 
     getTaskCompletionText
 } from "../utils";
 import { Emoji } from "emoji-picker-react";
-import { UserContext } from "../contexts/UserContext"
+import { UserContext } from "../contexts/UserContext";
+// import { TasksList } from "../components";
+import styled from "@emotion/styled";
+// import { TaskProvider } from "../contexts/TaskContext";
+import { TasksList } from "../components";
+// // import { Button } from "@mui/material";
 
+// const TasksList = lazy(() => 
+//     import("../components/tasks/TasksList").then((module) => ({ default: module.TasksList}))
+// );
 const Home = () => {
     const { user } = useContext(UserContext);
     const { name } = user;
@@ -60,14 +68,17 @@ const Home = () => {
                     {getTaskCompletionText(completedTaskPercentage)}
                 </TaskCompletionText>
             </TaskCountTextContainer>
+
+            <Suspense fallback={<div>Loading...</div>}>
+                        <TasksList />
+            </Suspense>
         </>
     )
 }
 
  export default Home;
 
-import styled from "@emotion/styled";
-// import { Button } from "@mui/material";
+
 
 export const TaskCountTextContainer = styled.div`
     line-height: 1.7;

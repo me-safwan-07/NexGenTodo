@@ -17,6 +17,8 @@ const App = () => {
       <BottomNav />
       <MainLayout>
         <TaskIcon scale={0.8}/>
+        <TaskIcon scale={0.6} variant="error" />
+        <TaskIcon scale={0.18} variant="success" />
         <AppRouter />
       </MainLayout>
     </>
