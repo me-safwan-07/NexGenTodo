@@ -11,12 +11,12 @@ import { UserContext } from "../contexts/UserContext";
 // import { TasksList } from "../components";
 import styled from "@emotion/styled";
 // import { TaskProvider } from "../contexts/TaskContext";
-import { TasksList } from "../components";
+// import { TasksList } from "../components";
 // // import { Button } from "@mui/material";
 
-// const TasksList = lazy(() => 
-//     import("../components/tasks/TasksList").then((module) => ({ default: module.TasksList}))
-// );
+const TasksList = lazy(() => 
+    import("../components/tasks/TasksList").then((module) => ({ default: module.TasksList}))
+);
 const Home = () => {
     const { user } = useContext(UserContext);
     const { name } = user;
