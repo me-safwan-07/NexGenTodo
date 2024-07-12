@@ -37,7 +37,7 @@ export const TasksList : React.FC = () => {
     const open = Boolean(anchorE1);
 
     // const [deleteSelectedOpen, setDeleteDialogOpen] = useState<boolean>(false);
-    // const [categories, setCategories] = useState<Category([] | undefined>)(undefined);
+    const [categories, setCategories] = useState<Category([] | undefined>)(undefined);
 
     return (
         <>
@@ -74,6 +74,30 @@ export const TasksList : React.FC = () => {
                     }}
                 />
                 <CategoriesListContainer>
+                    {categories?.map((cat) => (
+                        <CategoryBadge 
+                            key={cat.id}
+                            category={cat}
+                            emojiSizes={[24,20]}
+                            list={"true"}
+                            label={
+                                <div>
+                                    <span style={{ fontWeight: "bold" }}>
+                                        {cat.named}
+                                    </span>
+                                    {/* <span 
+                                        style={{
+                                            fontSize: "14px",
+                                            opacity: 0.9,
+                                            marginLeft: "4px"
+                                        }}
+                                    >
+                                        ({CategoryCounts[cat.is]})
+                                    </span> */}
+                                </div>
+                            }
+                        />
+                    ))}
                     <CategoryBadge 
                         category={}
                         emojiSizes={[24, 20]}
