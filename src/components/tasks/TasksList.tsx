@@ -3,8 +3,9 @@ import React, { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { TaskContext } from "../../contexts/TaskContext";
 import { Category } from "../../types/user";
+import { TaskMenu } from "./TaskMenu";
 import { IconButton, InputAdornment, TextField } from "@mui/material";
-import { Close, Search } from "@mui/icons-material";
+import { Close, RadioButtonChecked, Search } from "@mui/icons-material";
 import { Categories } from "emoji-picker-react";
 import { CategoryBadge } from "../CategoryBadge";
 
@@ -37,11 +38,11 @@ export const TasksList : React.FC = () => {
     const open = Boolean(anchorE1);
 
     // const [deleteSelectedOpen, setDeleteDialogOpen] = useState<boolean>(false);
-    const [categories, setCategories] = useState<Category([] | undefined>)(undefined);
+    // const [categories, setCategories] = useState<Category([] | undefined>)(undefined);
 
     return (
         <>
-            {/* <TaskMenu /> */}
+            <TaskMenu />
             <TaskContainer>
                 <SearchInput 
                     focused
@@ -73,29 +74,29 @@ export const TasksList : React.FC = () => {
                         ) : undefined,
                     }}
                 />
-                <CategoriesListContainer>
+                {/* <CategoriesListContainer>
                     {categories?.map((cat) => (
                         <CategoryBadge 
                             key={cat.id}
                             category={cat}
                             emojiSizes={[24,20]}
                             list={"true"}
-                            label={
-                                <div>
-                                    <span style={{ fontWeight: "bold" }}>
-                                        {cat.named}
-                                    </span>
-                                    {/* <span 
-                                        style={{
-                                            fontSize: "14px",
-                                            opacity: 0.9,
-                                            marginLeft: "4px"
-                                        }}
-                                    >
-                                        ({CategoryCounts[cat.is]})
-                                    </span> */}
-                                </div>
-                            }
+                            // label={
+                            //     <div>
+                            //         <span style={{ fontWeight: "bold" }}>
+                            //             {cat.named}
+                            //         </span>
+                            //         <span 
+                            //             style={{
+                            //                 fontSize: "14px",
+                            //                 opacity: 0.9,
+                            //                 marginLeft: "4px"
+                            //             }}
+                            //         >
+                            //             ({CategoryCounts[cat.id]})
+                            //         </span>
+                            //     </div>
+                            // }
                         />
                     ))}
                     <CategoryBadge 
@@ -103,7 +104,17 @@ export const TasksList : React.FC = () => {
                         emojiSizes={[24, 20]}
                         list={"true"}
                     />
-                </CategoriesListContainer>
+                </CategoriesListContainer> */}
+                {/* {multipleSelectedTasks.length > 0 && (
+                    
+                )} */}
+                <SelectedTasksContainer>
+                        <div>
+                            <h3>
+                                <RadioButtonChecked /> &nbsp; Selected  task
+                            </h3>
+                        </div>
+                    </SelectedTasksContainer>
             </TaskContainer>
         </>
     );
@@ -113,3 +124,4 @@ const TaskContainer = styled.div``;
 const SearchInput = styled(TextField)``;
 const SearchClear = styled(IconButton)``;
 const CategoriesListContainer = styled.div``;
+const SelectedTasksContainer = styled.div``;
