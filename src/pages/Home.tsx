@@ -68,7 +68,7 @@ const Home = () => {
                     {getTaskCompletionText(completedTaskPercentage)}
                 </TaskCompletionText>
             </TaskCountTextContainer>
-
+        
             <Suspense fallback={<div>Loading...</div>}>
                         <TasksList />
             </Suspense>
