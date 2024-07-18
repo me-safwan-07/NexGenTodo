@@ -2,11 +2,40 @@ import styled from "@emotion/styled";
 import React, { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { TaskContext } from "../../contexts/TaskContext";
-import { Category } from "../../types/user";
-import { IconButton, InputAdornment, TextField } from "@mui/material";
-import { Close, Search } from "@mui/icons-material";
-import { Categories } from "emoji-picker-react";
+import { Category, UUID } from "../../types/user";
+import {
+    Button,
+    Checkbox,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogTitle,
+    IconButton,
+    InputAdornment, 
+    TextField, 
+    Tooltip
+} from "@mui/material";
+import { 
+    Close, 
+    Search,
+    Delete,
+    DeleteRounded,
+    RadioButtonChecked,
+    DoneAll,
+    CancelRounded,
+    DoneRounded,
+    Task,
+    PushPinRounded, 
+} from "@mui/icons-material";
+import { 
+    TaskContainer,
+    DialogBtn,
+    NoTasks,
+} from "./Tasks.styled";
+import { Categories, Emoji } from "emoji-picker-react";
 import { CategoryBadge } from "../CategoryBadge";
+import { getFontColor } from "../../utils";
+import { TaskIcon } from "../TaskIcon";
 
 export const TasksList : React.FC = () => {
     const { user, setUser } = useContext(UserContext); 
@@ -30,15 +59,16 @@ export const TasksList : React.FC = () => {
         setEditModalOpen,
         handleDeleteTask,
         deleteDialogOpen,
-        setDeleteDialogOpen,
+        // setDeleteDialogOpen,
         handleCloseMoreMenu
     } = useContext(TaskContext);
-
     const open = Boolean(anchorE1);
 
-    // const [deleteSelectedOpen, setDeleteDialogOpen] = useState<boolean>(false);
-    const [categories, setCategories] = useState<Category([] | undefined>)(undefined);
-
+    const [deleteSelectedOpen, setDeleteDialogOpen] = useState<boolean>(false);
+    const [categories, setCategories] = useState<Category[] | undefined>(undefined);
+    const [ categoryCounts, setCategoryCounts] = useState<{
+        [categoryId: UUID]: number;
+    }>({});
     return (
         <>
             {/* <TaskMenu /> */}
@@ -83,33 +113,154 @@ export const TasksList : React.FC = () => {
                             label={
                                 <div>
                                     <span style={{ fontWeight: "bold" }}>
-                                        {cat.named}
+                                        {cat.name}
                                     </span>
-                                    {/* <span 
+                                    <span 
                                         style={{
                                             fontSize: "14px",
                                             opacity: 0.9,
                                             marginLeft: "4px"
                                         }}
                                     >
-                                        ({CategoryCounts[cat.is]})
-                                    </span> */}
+                                        ({categoryCounts[cat.id]})
+                                    </span>
                                 </div>
                             }
                         />
                     ))}
-                    <CategoryBadge 
-                        category={}
+                    {/* <CategoryBadge 
+                        category={cat}
                         emojiSizes={[24, 20]}
                         list={"true"}
-                    />
+                    /> */}
                 </CategoriesListContainer>
+                <SelectedTasksContainer>
+                    <div className="">
+                        <h3>
+                            <RadioButtonChecked /> &nbsp; Selected {""} task   
+                        </h3>
+                        <span></span>   
+                    </div>
+                    {/* TODO: add more features */}
+                    <div>
+                        <Tooltip title="Mark selected as done">
+                            <IconButton 
+                                // sx={{ color: getFontColor(theme.secondary)}}
+                                size="large"
+                                onClick={(e) => {e}}
+                            >
+                               <DoneAll />
+                            </IconButton>
+                        </Tooltip>
+                        <Tooltip title="Delete selected">
+                            <IconButton color="error" size="large" >
+                                <Delete />
+                            </IconButton>
+                        </Tooltip>
+                        <Tooltip title="cancel">
+                            <IconButton size="large" >
+                                <CancelRounded />
+                            </IconButton>
+                        </Tooltip>
+                    </div>
+                </SelectedTasksContainer>
+                <div
+                        style={{
+                            textAlign: "center",
+                            fontSize: "18px",
+                            opacity: 0.9,
+                            marginTop: "12px",
+                        }}
+                    >
+                        <b>Found {""} task</b>
+                    </div>
+                    <TaskContainer>
+                        <StyledRadio 
+                            checked
+                            icon={<RadioUnchecked />}
+                            checkedIcon={ <RadioChecked />}
+                        />
+                        <EmojiContainer>
+                            <DoneRounded fontSize="large" />
+                            {/* <Emoji 
+                                unified={task.emoji || ""}
+                                emojiStyle={user.emojisStyle}
+                                lazyLoad
+                            /> */}
+                        </EmojiContainer>
+                        <TaskInfo translate="no">
+                            <Pinned translate="yes">
+                                <PushPinRounded fontSize="small"/> &nbsp; Pinned
+                            </Pinned>
+                            {/* <TaskHeader>
+                                <TaskName></TaskName>
+                                <Tooltip title={new Intl.DateTimeFormat(navigator.language, {
+                                    dateStyle: "full",
+                                    timeStyle: "medium",
+                                }).format(new Date(task.date))}>
+                                    <TaskDate>{formatDate(new Date(task.date))} 
+                                    </TaskDate>
+                                </Tooltip>
+                            </TaskHeader> */}
+                        </TaskInfo>
+                    </TaskContainer>
+                    <NoTasks>
+                        <b>You don't have any taskss yet</b>
+                        <br />
+                        Click on the <b>+</b> button to add one
+                    </NoTasks>
+                    <div
+                        style={{
+                            textAlign: "center",
+                            fontSize: "20px",
+                            opacity: 0.9,
+                            marginTop: "18px"
+                        }}
+                    >
+                        <b>NO tasks found</b>
+                        <br />
+                        Try searching with diffrent keywords.
+                        <div style={{ marginTop: "14px"}}>
+                            <TaskIcon scale={0.8} />
+                        </div>
+                    </div>
+                    {/* <EditTask /> */}
             </TaskContainer>
+            <Dialog open={deleteDialogOpen}>
+                <DialogContent>
+                    <p>
+                        <b>Emoji:</b>{" "}
+                        {/* <Emoji /> */}
+                    </p>
+                    <p>
+                        <b>Task Name:</b> <span></span>
+                    </p>
+                </DialogContent>
+                <DialogActions>
+                    <DialogBtn color="primary">
+                        Cancel
+                    </DialogBtn>
+                    <DialogBtn>
+                    <DeleteRounded /> &nbsp; Delete
+                    </DialogBtn>
+                </DialogActions>
+            </Dialog>
         </>
     );
 };
 
-const TaskContainer = styled.div``;
+// const TaskContainer = styled.div``;
 const SearchInput = styled(TextField)``;
 const SearchClear = styled(IconButton)``;
 const CategoriesListContainer = styled.div``;
+// const DialogBtn = styled(Button)``
+const SelectedTasksContainer = styled.div``;
+const StyledRadio = styled(Checkbox)``;
+const RadioUnchecked = styled(RadioButtonChecked)``;
+const RadioChecked = styled(RadioButtonChecked)``;
+const EmojiContainer = styled.span``;
+const Pinned = styled.div``;
+const TaskInfo = styled.div``;
+const TaskHeader = styled.div``;
+const TaskName = styled.div``;
+const TaskDate = styled.p``;
