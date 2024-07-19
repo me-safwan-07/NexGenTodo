@@ -3,16 +3,30 @@ import React, { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { TaskContext } from "../../contexts/TaskContext";
 import { Category, UUID } from "../../types/user";
+
 import {
-    Button,
-    Checkbox,
+    TaskContainer,
+    DialogBtn,
+    NoTasks,
+    SearchInput, 
+    SearchClear,  
+    CategoriesListContainer, 
+    // DialogBtn,
+    SelectedTasksContainer,
+    StyledRadio,
+    RadioUnchecked,
+    RadioChecked,
+    EmojiContainer,
+    Pinned,
+    TaskInfo,
+
+} from "./Tasks.styled";
+import {
     Dialog,
     DialogActions,
     DialogContent,
-    DialogTitle,
     IconButton,
-    InputAdornment, 
-    TextField, 
+    InputAdornment,
     Tooltip
 } from "@mui/material";
 import { 
@@ -27,15 +41,12 @@ import {
     Task,
     PushPinRounded, 
 } from "@mui/icons-material";
-import { 
-    TaskContainer,
-    DialogBtn,
-    NoTasks,
-} from "./Tasks.styled";
+
 import { Categories, Emoji } from "emoji-picker-react";
 import { CategoryBadge } from "../CategoryBadge";
 import { getFontColor } from "../../utils";
 import { TaskIcon } from "../TaskIcon";
+import { TaskMenu } from "./TaskMenu";
 
 export const TasksList : React.FC = () => {
     const { user, setUser } = useContext(UserContext); 
@@ -71,7 +82,7 @@ export const TasksList : React.FC = () => {
     }>({});
     return (
         <>
-            {/* <TaskMenu /> */}
+            <TaskMenu />
             <TaskContainer>
                 <SearchInput 
                     focused
@@ -249,18 +260,3 @@ export const TasksList : React.FC = () => {
     );
 };
 
-// const TaskContainer = styled.div``;
-const SearchInput = styled(TextField)``;
-const SearchClear = styled(IconButton)``;
-const CategoriesListContainer = styled.div``;
-// const DialogBtn = styled(Button)``
-const SelectedTasksContainer = styled.div``;
-const StyledRadio = styled(Checkbox)``;
-const RadioUnchecked = styled(RadioButtonChecked)``;
-const RadioChecked = styled(RadioButtonChecked)``;
-const EmojiContainer = styled.span``;
-const Pinned = styled.div``;
-const TaskInfo = styled.div``;
-const TaskHeader = styled.div``;
-const TaskName = styled.div``;
-const TaskDate = styled.p``;
