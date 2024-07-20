@@ -9,7 +9,7 @@ import { UserContextProvider } from "./contexts/UserProvider.tsx";
 // initColors(ORIGINAL_COLORS);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <BrowserRouter>
+  <BrowserRouter> 
     <UserContextProvider>
       <App />
     </UserContextProvider>
