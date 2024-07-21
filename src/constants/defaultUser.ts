@@ -1,13 +1,13 @@
-import { systemInfo } from "../utils";
-import type { User } from "../types/user";
 import { EmojiStyle } from "emoji-picker-react";
+import { User } from "../types/user";
+import { systemInfo } from "../utils/getSystemInfo";
 
 export const defaultUser: User = {
-    name : null,
+    name:  null,
     createdAt: new Date(),
     profilePicture: null,
-    emojisStyle:
-        systemInfo.os === "iOS" || systemInfo.os === "macOS" ? EmojiStyle.NATIVE: EmojiStyle.APPLE,
+    emojiStyle: 
+        systemInfo.os === "iOS" || systemInfo.os === "macOS" ? EmojiStyle.NATIVE : EmojiStyle.APPLE,
     tasks: [],
     theme: "system",
     darkmode: "auto",
@@ -17,42 +17,32 @@ export const defaultUser: User = {
             doneToBottom: false,
             enableGlow: true,
             simpleEmojiPicker: false,
-            enableReadAloud: "speechSynthesis" in window,
+            enableReadAloud: "speechSysnthesis" in window,
             voice: "Google UK English Male",
             appBadge: false,
-            voiceVolume: 0.6
-        }
+            voiceVolume: 0.6,
+        },
     ],
     categories: [
-        { 
-            id: "857f0db6-43b2-43eb-8143-ec4e26472516", 
-            name: "Home", 
-            emoji: "1f3e0",
-            color: "#1fff44"
+        { id: "857f0db6-43b2-43eb-8143-ec4e26472516", name: "Home", emoji: "1f3e0", color: "#1fff44" },
+        { id: "0292cba5-f6e2-41c4-b5a7-c59a0aaecfe3", name: "Work", emoji: "1f3e2", color: "#248eff" },
+        {
+          id: "a47a4af1-d720-41eb-9121-d3728605a62b",
+          name: "Personal",
+          emoji: "1f464",
+          color: "#e843fe",
         },
         {
-            id: "0292cba5-f6e2-41c4-b5a7-c59a0aaecfe3",
-            name: "Work",
-            emoji: "1f3e2",
-            color: "#1fff44"
+          id: "393068a9-9db7-4dfa-a00f-cd359f8024e8",
+          name: "Health/Fitness",
+          emoji: "1f4aa",
+          color: "#ffdf3d",
         },
         {
-            id: "a47a4af1-d720-41eb-9121-d3728605a62b",
-            name: "Personal",
-            emoji: "1f464",
-            color: "#e843fe",
-        },
-        {
-            id: "393068a9-9db7-4dfa-a00f-cd359f8024e8",
-            name: "Health/Fitness",
-            emoji: "1f464",
-            color: "#e843fe",
-        },
-        {
-            id: "afa0fdb4-f668-4d5a-9ad0-4e22d2b8e841",
-            name: "Education",
-            emoji: "1f4da",
-            color: "#ff8e24"
+          id: "afa0fdb4-f668-4d5a-9ad0-4e22d2b8e841",
+          name: "Education",
+          emoji: "1f4da",
+          color: "#ff8e24",
         },
     ],
     colorList: [
@@ -71,3 +61,4 @@ export const defaultUser: User = {
         "#FF2F2F",
     ],
 };
+    
