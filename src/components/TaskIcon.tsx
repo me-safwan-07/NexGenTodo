@@ -1,7 +1,7 @@
-// import { useTheme } from "@emotion/react";
+import { useTheme } from "@emotion/react";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
-// import { getFontColor } from "../utils";
+import { getFontColor } from "../utils/getFontColor";
 
 interface NotFoundIconProps {
   scale?: number;
@@ -12,12 +12,12 @@ interface NotFoundIconProps {
  * Component for displaying a svg task icon in theme color.
  */
 export const TaskIcon = ({ scale = 1, color, variant = "error" }: NotFoundIconProps) => {
-  // const theme = useTheme();
+//   const theme = useTheme();
   const { user } = useContext(UserContext);
   const { settings } = user;
 
   const taskIconClr = color;
-  const secondIconClr = color;
+//   const secondIconClr = getFontColor(color );
 
   const renderIcon = () => {
     if (variant === "add") {
@@ -39,9 +39,16 @@ export const TaskIcon = ({ scale = 1, color, variant = "error" }: NotFoundIconPr
         height="13.4884"
         rx="6.74419"
         transform="rotate(-90 124.093 286.465)"
-        fill={secondIconClr}
+        // fill={secondIconClr}
       />
-      <rect x="87" y="235.884" width="87.6744" height="13.4884" rx="6.74419" fill={secondIconClr} />
+      <rect 
+        x="87"
+        y="235.884" 
+        width="87.6744" 
+        height="13.4884" 
+        rx="6.74419" 
+        // fill={secondIconClr} 
+        />
     </>
   );
 
@@ -54,7 +61,7 @@ export const TaskIcon = ({ scale = 1, color, variant = "error" }: NotFoundIconPr
         height="13.4884"
         rx="6.74419"
         transform="rotate(-45 95.0707 268.856)"
-        fill={secondIconClr}
+        // fill={secondIconClr}
       />
 
       <rect
@@ -64,7 +71,7 @@ export const TaskIcon = ({ scale = 1, color, variant = "error" }: NotFoundIconPr
         height="13.4884"
         rx="6.74419"
         transform="rotate(45 104.608 206.861)"
-        fill={secondIconClr}
+        // fill={secondIconClr}
       />
     </>
   );
@@ -72,7 +79,7 @@ export const TaskIcon = ({ scale = 1, color, variant = "error" }: NotFoundIconPr
   const SuccessIcon = (
     <path
       d="M96 242.159L119.159 265.318L165.476 219"
-      stroke={secondIconClr}
+    //   stroke={secondIconClr}
       stroke-width="15"
       stroke-linecap="round"
       stroke-linejoin="round"

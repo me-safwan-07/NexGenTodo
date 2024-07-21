@@ -1,11 +1,16 @@
-import { Global, css } from "@emotion/react";
+import { Global, css, useTheme } from "@emotion/react"
 
 export const GlobalStyles = () => {
-    return (
-        <Global styles={css`
-            * {
-                font-weight: "Poppins, sans-serif !important;
-            }  
-        `} />
-    )
-}
+    const theme = useTheme();
+
+    return(
+        <Global 
+            styles={css`
+                * {
+                    font-family: "Poppins", sans-serif !important;
+                    -webkit-tap-highlight-color: transparent;
+                }
+            `}
+        />
+    );
+};
