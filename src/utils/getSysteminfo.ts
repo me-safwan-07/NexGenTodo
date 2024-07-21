@@ -3,20 +3,20 @@ type Browser = "Chrome" | "Firefox" | "Safari" | "Edge" | "Unknown";
 
 const userAgent = window.navigator.userAgent;
 
-const getOperatingSystem = () : OperatingSystem => {
+const getOperatingSystem = (): OperatingSystem => {
     if(/Windows NT/i.test(userAgent)) return "Windows";
     if(/iphone|ipad|ipod/i.test(userAgent)) return "iOS";
     if(/Mac/i.test(userAgent)) return "macOS";
     if(/Linux/i.test(userAgent)) return "Linux";
-    if(/Android/i.test(userAgent)) return "Android";
+    if (/Android/i.test(userAgent)) return "Android";
     return "Unknown";
 };
 
 const getBrowser = (): Browser => {
-    if(/Chrome/i.test(userAgent) && !/Edge/i.test(userAgent)) return "Chrome";
-    if(/Firefox/i.test(userAgent)) return "Firefox";
-    if(/Safari/i.test(userAgent) && !/Chrome/i.test(userAgent)) return "Safari";
-    if(/Edge/i.test(userAgent)) return "Edge";
+    if (/Chrome/i.test(userAgent) && !/Edge/i.test(userAgent)) return "Chrome";
+    if (/Firefox/i.test(userAgent)) return "Firefox";
+    if (/Safari/i.test(userAgent) && !/Chrome/i.test(userAgent)) return "Safari";
+    if (/Edge/i.test(userAgent)) return "Edge";
     return "Unknown";
 };
 
