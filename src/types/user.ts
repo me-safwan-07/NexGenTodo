@@ -1,21 +1,21 @@
 import { EmojiStyle } from "emoji-picker-react";
-import { AppTheme } from "../styles/theme";
 
 export type UUID = ReturnType<typeof crypto.randomUUID>;
 
-export type DarkModeOptions = "system" | "auto" | "light" | "dark";
+export type DarkModeOptions = "system" | "auto" | "light" | 'dark';
+
 export interface User {
     name: string | null;
     createdAt: Date;
     profilePicture: string | null;
-    emojisStyle: EmojiStyle;
+    emojiStyle: EmojiStyle;
     tasks: Task[];
     categories: Category[];
     colorList: string[];
     settings: AppSettings[];
-    theme: AppTheme;
+    theme: string;
     darkmode: DarkModeOptions;
-}
+};
 
 export interface Task {
     id: UUID;
