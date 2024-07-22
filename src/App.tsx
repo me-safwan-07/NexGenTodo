@@ -1,15 +1,18 @@
 import { ThemeProvider as EmotionTheme } from "@emotion/react";
-import { ThemeProvider, type Theme } from "@mui/material";
-import { createCustomTheme, Themes } from "./theme/theme";
-import { useCallback, useContext } from "react";
+// import { ThemeProvider, type Theme } from "@mui/material";
+import { createCustomTheme } from "./theme/theme";
+import { useContext } from "react";
 import { useSystemTheme } from "./hooks/useSystemTheme";
 import { UserContext } from "./contexts/UserContext";
-import { ColorPalette } from "./theme/themeConfig";
-import { getFontColor } from "./utils/getFontColor";
-import { GlobalStyles } from "./styles/globalStyles";
+// import { ColorPalette } from "./theme/themeConfig";
+// import { getFontColor } from "./utils/getFontColor";
+// import { GlobalStyles } from "./styles/globalStyles";
 import { CustomToaster } from "./components/Toaster";
+import ErrorBoundary from "./components/ErrorBoundary";
+import MainLayout from "./layouts/MainLayout";
+import { Home } from "@mui/icons-material";
 function App() {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const systemTheme = useSystemTheme();
 
   // const getMuiTheme = useCallback((): Theme => {
@@ -38,13 +41,13 @@ function App() {
   };
 
   return (
-    <ThemeProvider
-      theme={createCustomTheme(
-        // getMuiTheme().palette.primary.main,
-        // getMuiTheme().palette.secondary.main,
-        isDarkMode() ? "dark" : "light"
-      )}
-    >
+    // <ThemeProvider
+    //   theme={createCustomTheme(
+    //     // getMuiTheme().palette.primary.main,
+    //     // getMuiTheme().palette.secondary.main,
+    //     isDarkMode() ? "dark" : "light"
+    //   )}
+    // >
       <EmotionTheme
         theme={createCustomTheme(
           // getMuiTheme().palette.primary.main,
@@ -52,10 +55,15 @@ function App() {
           isDarkMode()? "dark" : "light"
         )}
       >
-        <GlobalStyles />
+        {/* <GlobalStyles /> */}
         <CustomToaster />
+        <ErrorBoundary>
+          <MainLayout>
+            <Home />
+          </MainLayout>
+        </ErrorBoundary>
       </EmotionTheme>
-    </ThemeProvider>
+    // </ThemeProvider>
   )
 }
 

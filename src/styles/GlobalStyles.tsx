@@ -1,7 +1,7 @@
-import { Global, css, useTheme } from "@emotion/react"
+import { Global, css } from "@emotion/react"
 
-export const GlobalStyles = () => {
-    const theme = useTheme();
+ const GlobalStyles = () => {
+    // const theme = useTheme();
 
     return(
         <Global 
@@ -14,3 +14,5 @@ export const GlobalStyles = () => {
         />
     );
 };
+
+export default GlobalStyles;

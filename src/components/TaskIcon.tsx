@@ -1,7 +1,7 @@
-import { useTheme } from "@emotion/react";
+// import { useTheme } from "@emotion/react";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
-import { getFontColor } from "../utils/getFontColor";
+// import { getFontColor } from "../utils/getFontColor";
 
 interface NotFoundIconProps {
   scale?: number;
