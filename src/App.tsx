@@ -48,21 +48,21 @@ function App() {
     //     isDarkMode() ? "dark" : "light"
     //   )}
     // >
-      <EmotionTheme
-        theme={createCustomTheme(
-          // getMuiTheme().palette.primary.main,
-          // getMuiTheme().palette.secondary.main,
-          isDarkMode()? "dark" : "light"
-        )}
-      >
-        {/* <GlobalStyles /> */}
-        <CustomToaster />
-        <ErrorBoundary>
-          <MainLayout>
+      // <EmotionTheme
+      //   theme={createCustomTheme(
+      //     // getMuiTheme().palette.primary.main,
+      //     // getMuiTheme().palette.secondary.main,
+      //     isDarkMode()? "dark" : "light"
+      //   )}
+      // >
+        // {/* <GlobalStyles /> */}
+        // <CustomToaster />
+        // <ErrorBoundary>
+          // <MainLayout>
             <Home />
-          </MainLayout>
-        </ErrorBoundary>
-      </EmotionTheme>
+          // {/* </MainLayout> */}
+        // </ErrorBoundary>
+      // </EmotionTheme>
     // </ThemeProvider>
   )
 }
