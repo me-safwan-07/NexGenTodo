@@ -19,13 +19,13 @@ export interface User {
 
 export interface Task {
     id: UUID;
-    done: boolean;
-    pinned: boolean;
+    done?: boolean;
+    pinned?: boolean;
     name: string;
     description?: string;
     emoji?: string;
-    color: string;
-    date: Date;
+    color?: string;
+    date?: Date;
     deadline?: Date;
     category?: Category[];
     lastSave?: Date;
