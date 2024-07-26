@@ -6,7 +6,7 @@ import { showToast } from "../utils";
 import { Task } from "../types/user";
 import { useStorageState } from "../hooks/useStorageState";
 
-export const AddTask = () => {
+const AddTask = () => {
     const { user, setUser } = useContext(UserContext);
     const [ name, setName ] = useStorageState<string>("", "name", "sessionStorage");
 
@@ -33,6 +33,7 @@ export const AddTask = () => {
         // <h2>{name}</h2>
         console.log(newTask);
     }
+    
     return (
         <Container>
             <StyledInput 
@@ -52,9 +53,12 @@ export const AddTask = () => {
                 Create Task
             </AddTaskButton>
             
+
         </Container>
     )
 };
+
+export default AddTask;
 
 
 const Container = styled.div``;

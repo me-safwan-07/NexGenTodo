@@ -3,8 +3,9 @@ import { useResponsiveDisplay } from "../hooks/useResponsiveDisplay";
 import { AddButton } from "../styles";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { AddRounded } from "@mui/icons-material";
+import TasksList from "../components/tasks/TasksList";
 
 const Home = () => {
     const { user } = useContext(UserContext);
@@ -14,9 +15,7 @@ const Home = () => {
     const isMobile = useResponsiveDisplay();
     return (
         <>
-            {/* {tasks.length > 0 && (
-                <
-            )} */}
+            <TasksList />
             
             
             {isMobile && (
