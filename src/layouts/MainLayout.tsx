@@ -9,7 +9,7 @@ interface MainLayoutProps {
 const MainLayout = ({ children }: MainLayoutProps) => {
     return(
         <>
-            <ProfileSidebar />
+            {/* <ProfileSidebar /> */}
             {children}
             <div style={{ marginTop: "128px"}}/>
             <BottomNav />
