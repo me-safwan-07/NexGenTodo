@@ -1,6 +1,7 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { CheckBox, RadioButtonChecked } from "@mui/icons-material";
+import { IconButton, TextField } from "@mui/material";
 
 
 export const TasksContainer = styled.main`
@@ -60,3 +61,41 @@ export const TaskName = styled.h3`
     white-space: pre-line;
 `;
 
+export const TaskInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+`;
+
+export const TaskHeader = styled.div`
+    display: flex;
+    align-items: center;
+`;
+
+export const TaskDate = styled.p`
+    margin: 0 6px;
+    text-align: right;
+    margin-left: auto;
+`;
+
+export const SearchInput = styled(TextField)`
+    margin: 8px 0 0 0;
+    border-radius: 16px;
+    transition: 0.3s all;
+    width: 100%;
+    & .MuiOutlinedInput-notchedOutline {
+        border: 1px solid #44479cb7; 
+    }
+    & .MuiOutlinedInput-root {
+        padding: 2px 16px;
+        border-radius: 16px;
+        transition: 0.3s all;
+        background: #f0f0f0;
+        color: #333;
+        & .MuiSvgIcon-root {
+            color: #333;
+        }
+    }
+`;
+
+export const SearchClear = styled(IconButton)``;

@@ -1,4 +1,4 @@
-import { useContext, useMemo } from "react"
+import { useCallback, useContext } from "react"
 import { TaskContext } from "../../contexts/TaskContext";
 import { Task, UUID } from "../../types/user";
 import { UserContext } from "../../contexts/UserContext";
@@ -9,23 +9,39 @@ import {
     TaskName,
     RadioUnchecked,
     RadioChecked,
+    TaskInfo,
+    TaskHeader,
+    SearchInput,
+    SearchClear,
+    // TaskDate,
 } from "./tasks.styled";
-import { Taskmenu } from "./TaskMenu";
-import { IconButton } from "@mui/material";
-import { MoreVert } from "@mui/icons-material";
+import  TaskMenu  from "./TaskMenu";
+import { IconButton, InputAdornment } from "@mui/material";
+import { Close, MoreVert, Search } from "@mui/icons-material";
 const TasksList: React.FC = () => {
-    const { user, setUser } = useContext(UserContext);
+    const { user } = useContext(UserContext);
     const {
-        selectedTaskId,
+        // selectedTaskId,
         setSelectedTaskId,
         anchorEl,
         setAnchorEl,
+        search,
+        setSearch,
+        multipleSelectedTasks,
+        setMultipleSelectedTasks,
+        handleSelectTask,
     } = useContext(TaskContext);
     const open = Boolean(anchorEl);
-    const selectedTask = useMemo(() => {
-        return user.tasks.find((task) => task.id === selectedTaskId) || ( {} as Task);
-    }, [user.tasks, selectedTaskId]);
+    
+    // const reorderTasks = useCallback(
+    //     (tasks: Task[]) : Task[] => {
+    //         const searchLower = search.toLowerCase();
+    //         return tasks.filter(task => task.name.toLowerCase().includes(searchLower));
+    //     },[search]
+    // );
 
+    // const filterTasks = reorderTasks()
+    
     const handleClick = (event: React.MouseEvent<HTMLElement>, taskId: UUID) => {
         setAnchorEl(event.currentTarget);
         setSelectedTaskId(taskId);
@@ -33,8 +49,40 @@ const TasksList: React.FC = () => {
 
     return (
         <>
-            <Taskmenu />
+            <TaskMenu />
             <TasksContainer>
+                {user.tasks.length > 0 && (
+                    <SearchInput 
+                        focused
+                        color="primary"
+                        placeholder="Search for task..."
+                        value={search}
+                        onChange={(e) => {
+                            setSearch(e.target.value);
+                        }}
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment  position="start">
+                                    <Search sx={{ color: "pink"}} />
+                                </InputAdornment>
+                            ),
+                            endAdornment: search ? (
+                                <InputAdornment position="end">
+                                    <SearchClear
+                                        onClick={() => setSearch("")}
+                                    >
+                                        <Close 
+                                            sx={{
+                                                color: "white",
+                                                transition: ".3s all"
+                                            }}
+                                        />
+                                    </SearchClear>
+                                </InputAdornment>
+                            ) : undefined,
+                        }}
+                    />
+                )}
                 {user.tasks.length !== 0 ? (
                     user.tasks.map((task) => (
                         <TaskContainer 
@@ -46,16 +94,36 @@ const TasksList: React.FC = () => {
                             }}
                             // onClick={() => setSelectedTaskId(task.id)}                          
                         >
-                            <StyledRadio
-                                // checked={task.id === selectedTaskId}
-                                // icon={<RadioUnchecked />}
-                                // checkedIcon={<RadioChecked />}
-                            /> 
-                            <TaskName>{task.name}</TaskName>
+                            {/* {multipleSelectedTasks.length > 0 && ( */}
+                                <StyledRadio
+                                    // checked={multipleSelectedTasks.includes(task.id)}
+                                    icon={<RadioUnchecked />}
+                                    checkedIcon={<RadioChecked />}
+                                    onChange={() => {
+                                        if (multipleSelectedTasks.includes(task.id)) {
+                                            setMultipleSelectedTasks((prevTasks) => 
+                                                prevTasks.filter((id) => id !== task.id)
+                                            );
+                                        } else {
+                                            handleSelectTask(task.id);
+                                        }
+                                    }}
+                                />
+                            {/* )} */}
+                             
+                             <TaskInfo >
+                                <TaskHeader>
+                                    <TaskName >{task.name}</TaskName>
+                                    {/* <TaskDate>{formateDate</TaskDate> */}
+                                </TaskHeader>
+                                <div className="div">
+                                    {task.description}
+                                </div>
+                             </TaskInfo>
                             <IconButton
                                 aria-label="Task Menu"
                                 aria-controls={open ? "task-menu" : undefined}
-                                aria-hashpopup="true"
+                                aria-haspopup="true"
                                 aria-expanded={open ? "true" : undefined}
                                 onClick={(event) => handleClick(event, task.id)}
                             >
@@ -66,6 +134,7 @@ const TasksList: React.FC = () => {
                 ) : (
                     <b>You don't have any tasks yet</b>
                 )}
+              
             </TasksContainer>
         </>
         
