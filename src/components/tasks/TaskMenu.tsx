@@ -7,11 +7,13 @@ import { DeleteRounded } from "@mui/icons-material";
 import { useResponsiveDisplay } from "../../hooks/useResponsiveDisplay";
 import { BottomSheet } from "react-spring-bottom-sheet"
 import { Task } from "../../types/user";
+import { useNavigate } from "react-router-dom";
 
 const TaskMenu: React.FC = () => {
     const { user } = useContext(UserContext);
     const { tasks } = user;
     const isMobile = useResponsiveDisplay();
+    const n = useNavigate();
     const { 
         selectedTaskId,
         anchorEl,
@@ -25,13 +27,10 @@ const TaskMenu: React.FC = () => {
 
     const menuItems: JSX.Element = (
         <div>
-            <StyledMenuItem
-                onClick={() => {
-                    handleDeleteTask();
-                    handleCloseMoreMenu();
-                }}
+            <StyledMenuItem 
+                onClick={(e) => e}
             >
-                <DeleteRounded /> &nbsp; Delete
+                 Mark as not done
             </StyledMenuItem>
         </div>
     )

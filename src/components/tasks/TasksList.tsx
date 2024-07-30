@@ -97,8 +97,8 @@ const TasksList: React.FC = () => {
                             {/* {multipleSelectedTasks.length > 0 && ( */}
                                 <StyledRadio
                                     // checked={multipleSelectedTasks.includes(task.id)}
-                                    icon={<RadioUnchecked />}
-                                    checkedIcon={<RadioChecked />}
+                                    // icon={<RadioUnchecked />}
+                                    // checkedIcon={<RadioChecked />}
                                     onChange={() => {
                                         if (multipleSelectedTasks.includes(task.id)) {
                                             setMultipleSelectedTasks((prevTasks) => 

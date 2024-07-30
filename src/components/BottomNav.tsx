@@ -3,12 +3,17 @@ import { AddRounded, TaskAlt } from "@mui/icons-material";
 import { Badge, BottomNavigation, BottomNavigationAction } from "@mui/material";
 import { Box } from "@mui/system";
 import { useNavigate } from "react-router-dom";
+import { useResponsiveDisplay } from "../hooks/useResponsiveDisplay";
 // import { useResponsiveDisplay } from "../hooks/useResponsiveDisplay"
 
 export const BottomNav = (): JSX.Element | null => {
     // const mobile = useResponsiveDisplay();
     const n = useNavigate();
     const smallIconSize = "29px";
+    const isMobile = useResponsiveDisplay();
+    if(!isMobile) {
+        return null;
+    }
     return (
         <Container>
             <StyledBottomNavigation >
